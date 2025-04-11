@@ -15,9 +15,9 @@ resource "aws_kms_key" "this" {
 
   tags = merge(
     var.tags,
-    {
+    var.name_tag_enabled ? {
       Name = each.key
-    },
+    } : {},
     try(each.value.tags, {})
   )
 }
