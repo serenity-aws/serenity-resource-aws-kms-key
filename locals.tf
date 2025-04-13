@@ -1,6 +1,6 @@
 locals {
-  kms_keys = {
-    for name, key_data in try(var.data, {}) :
-    name => key_data if var.create && try(var.data.create, true) && try(key_data.create, true)
+  resources = {
+    for id, properties in try(var.resources, {}) :
+    id => properties if var.create && try(properties.create, true)
   }
 }

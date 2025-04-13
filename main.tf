@@ -1,5 +1,5 @@
 resource "aws_kms_key" "this" {
-  for_each = local.kms_keys
+  for_each = local.resources
 
   bypass_policy_lockout_safety_check = try(each.value.bypass_policy_lockout_safety_check, null)
   customer_master_key_spec           = try(each.value.customer_master_key_spec, null)
